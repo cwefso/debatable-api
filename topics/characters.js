@@ -1,82 +1,94 @@
+import shortid from 'shortid';
+
 export const characters = [
   {
     name: "Princess Leia",
-    image: "",
-    tags: ["characters"]
+    image: "https://i.imgur.com/yoWk7Lp.jpg?1",
+    tags: ["characters"],
+    key: shortid.generate()
   },
   {
     name: "Darth Vader",
-    image: "",
-    tags: ["characters"]
+    image: "https://imgur.com/3rJZNkn",
+    tags: ["characters"],
+    key: shortid.generate()
   },
   {
     name: "Dorothy Gale",
-    image: "",
-    tags: ["characters"]
+    image: "https://imgur.com/PDY1n4R",
+    tags: ["characters"],
+    key: shortid.generate()
   },
   {
     name: "Marry Poppins",
-    image: "",
-    tags: ["characters"]
+    image: "https://imgur.com/m8Zxg7d",
+    tags: ["characters"],
+    key: shortid.generate()
   },
   {
     name: "Frodo Baggins",
-    image: "",
-    tags: ["characters"]
+    image: "https://imgur.com/pDxOf6j",
+    tags: ["characters"],
+    key: shortid.generate()
   },
   {
     name: "Harry Potter",
-    image: "",
-    tags: ["characters"]
+    image: "https://imgur.com/RoLGoS5",
+    tags: ["characters"],
+    key: shortid.generate()
   },
   {
     name: "Superman",
-    image: "",
-    tags: ["characters"]
-  },
-  {
-    name: "Superman",
-    image: "",
-    tags: ["characters"]
+    image: "https://imgur.com/D25ZEXr",
+    tags: ["characters"],
+    key: shortid.generate()
   },
   {
     name: "Batman",
-    image: "",
-    tags: ["characters"]
+    image: "https://imgur.com/b1mJn6W",
+    tags: ["characters"],
+    key: shortid.generate()
   },
   {
     name: "Wonder Woman",
-    image: "",
-    tags: ["characters"]
+    image: "https://imgur.com/FTgL5ca",
+    tags: ["characters"],
+    key: shortid.generate()
   },
   {
     name: "Spiderman",
-    image: "",
-    tags: ["characters"]
+    image: "https://imgur.com/oECW81u",
+    tags: ["characters"],
+    key: shortid.generate()
   },
   {
     name: "Sherlock Holmes",
-    image: "",
-    tags: ["characters"]
+    image: "https://imgur.com/MR1xIpH",
+    tags: ["characters"],
+    key: shortid.generate()
   },
   {
     name: "Kermit The Frog",
-    image: "",
-    tags: ["characters"]
+    image: "https://imgur.com/US0ehsO",
+    tags: ["characters"],
+    key: shortid.generate()
   },
   {
     name: "Godzilla",
-    image: "",
-    tags: ["characters"]
+    image: "https://imgur.com/HQUSLYa",
+    tags: ["characters"],
+    key: shortid.generate()
   },
   {
     name: "James Bond",
-    image: "",
-    tags: ["characters"]
+    image: "https://imgur.com/n2GxvQ2",
+    tags: ["characters"],
+    key: shortid.generate()
   },
   {
     name: "Dracula",
-    image: "",
-    tags: ["characters"]
+    image: "https://imgur.com/ShoWnNJ",
+    tags: ["characters"],
+    key: shortid.generate()
   }
 ]
