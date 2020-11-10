@@ -40,30 +40,30 @@ app.locals.topics = [
 
 app.locals.players = [];
 
+app.locals.lobby = [];
+
 app.get("/", (request, response) => {
 	response.send("Debatable Backend");
 });
 
 app.get("/api/v1/all-topics", (request, response) => {
 	const topics = app.locals.topics;
-
 	if (!topics) {
 		return response.sendStatus(404);
 	}
-
 	response.json({ topics });
 });
 
 app.get("/api/v1/topic", (request, response) => {
 	const topic1 = shuffle.pick(app.locals.topics);
-	app.locals.topics = app.locals.topics.filter(
-		(topic) => topic1.name !== topic.name
-  );
-  
-  if(app.locals.players.length === 2){
-    app.locals.players.shift()
-  }
-  
+	// app.locals.topics = app.locals.topics.filter(
+	// 	(topic) => topic1.name !== topic.name
+	// );
+
+	if (app.locals.players.length === 2) {
+		app.locals.players.shift();
+	}
+
 	app.locals.players.push(topic1);
 
 	const topic = topic1;
@@ -73,14 +73,6 @@ app.get("/api/v1/topic", (request, response) => {
 	}
 
 	response.json({ topic });
-});
-
-app.get("/api/v1/clear", (request, response) => {
-  app.locals.players = []
-  
-  players = app.locals.players
-
-	response.json({ players });
 });
 
 app.get("/api/v1/players", (request, response) => {
@@ -93,27 +85,48 @@ app.get("/api/v1/players", (request, response) => {
 	response.json({ players });
 });
 
+// app.delete("/api/v1/favorites/:contentId", (request, response) => {
+// 	const { contentId } = request.params;
+// 	const parsedId = parseInt(contentId);
+// 	const match = app.locals.favorites.find(
+// 		(painting) => parseInt(painting.contentId) === parsedId
+// 	);
 
-app.delete("/api/v1/favorites/:contentId", (request, response) => {
-	const { contentId } = request.params;
-	const parsedId = parseInt(contentId);
-	const match = app.locals.favorites.find(
-		(painting) => parseInt(painting.contentId) === parsedId
-	);
+// 	if (!match) {
+// 		return response
+// 			.status(404)
+// 			.json({ error: `No painting found with an id of ${contentId}.` });
+// 	}
 
-	if (!match) {
-		return response
-			.status(404)
-			.json({ error: `No painting found with an id of ${contentId}.` });
+// 	const updatedPaintings = app.locals.favorites.filter(
+// 		(painting) => parseInt(painting.contentId) !== parsedId
+// 	);
+
+// 	app.locals.favorites = updatedPaintings;
+
+// 	return response.status(202).json(app.locals.favorites);
+// });
+
+app.get("/api/v1/lobby", (request, response) => {
+	const lobby = app.locals.lobby;
+
+	if (!lobby) {
+		return response.sendStatus(404);
 	}
 
-	const updatedPaintings = app.locals.favorites.filter(
-		(painting) => parseInt(painting.contentId) !== parsedId
-	);
+	response.json({ lobby });
+});
 
-	app.locals.favorites = updatedPaintings;
+app.post('/api/v1/lobby', (request, response) => {
+  const user = request.body;
+	const { name, id } = user;
+	const lobby = app.locals.lobby;
 
-	return response.status(202).json(app.locals.favorites);
+	let otherPlayers = lobby.filter(player => player.id !== id)
+	app.locals.lobby = otherPlayers
+
+  app.locals.lobby.push({ name, id });
+  response.status(201).json(app.locals.lobby);
 });
 
 app.listen(app.get("port"), () => {
